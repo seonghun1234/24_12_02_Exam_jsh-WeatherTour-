@@ -1,0 +1,268 @@
+/* 전체 레이아웃 */
+.weather-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+  min-height: 100vh;
+  background-size: 200% 200%; /* 넓은 배경 크기 */
+  overflow: hidden;
+  position: relative;
+  transition: background 0.5s ease; /* 부드러운 전환 */
+}
+
+/* 빛나는 효과와 그라데이션 - 기본 상태 */
+.weather-app.sunny {
+  background: linear-gradient(45deg, #f9d423, #ff4e50, #f9d423, #ff4e50);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.weather-app.cloudy {
+  background: linear-gradient(45deg, #3a7bd5, #3a6073, #3a7bd5, #3a6073);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.weather-app.rainy {
+  background: linear-gradient(45deg, #355c7d, #6c5b7b, #355c7d, #6c5b7b);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.weather-app.snowy {
+  background: linear-gradient(45deg, #83a4d4, #b6fbff, #83a4d4, #b6fbff);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.weather-app.partlyCloudy {
+  background: linear-gradient(45deg, #ffafbd, #ffc3a0, #ffafbd, #ffc3a0);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* 배경 애니메이션 효과 */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 헤더와 검색창 고정 */
+.header {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff; /* 배경과 대비되는 흰색 텍스트 */
+}
+
+.search {
+  display: flex;
+  margin-top: 10px;
+}
+
+.search input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 200px;
+  margin-right: 8px;
+}
+
+.search button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 날씨 정보 영역 */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.temperature {
+  font-size: 48px;
+  font-weight: bold;
+  color: #0078d4;
+}
+
+.condition {
+  font-size: 20px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* 세부 날씨 정보 */
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #666;
+  margin-top: 20px;
+}
+/* 검색 버튼 호버 효과 */
+.search button:hover {
+  background-color: #0053a6; /* 더 진한 파란색 */
+  box-shadow: 0 4px 15px rgba(0, 120, 212, 0.5); /* 호버 시 그림자 추가 */
+  transform: translateY(-2px); /* 살짝 올라가는 효과 */
+  transition: all 0.3s ease; /* 부드러운 전환 */
+}
+
+/* 입력 필드 포커스 효과 */
+.search input:focus {
+  border: 1px solid #0078d4;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 120, 212, 0.5); /* 포커스 시 빛나는 효과 */
+}
+
+/* 날씨 정보 카드 애니메이션 */
+.weather-info {
+  animation: fadeIn 0.8s ease-out; /* 페이드 인 효과 */
+}
+
+/* 애니메이션 키프레임 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 추천 관광지 섹션 */
+.tourist-spots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8); /* 날씨 정보와 동일한 배경 */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  animation: fadeIn 0.8s ease-out; /* 페이드 인 애니메이션 */
+}
+
+.tourist-spots h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0078d4; /* 날씨 정보 제목과 동일한 색상 */
+  margin-bottom: 15px;
+}
+
+.tourist-spots ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 반응형 그리드 */
+  gap: 15px;
+  padding: 0;
+  list-style: none;
+  width: 100%; /* 카드가 섹션 안에 꽉 차도록 */
+}
+
+.tourist-spots .spot {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tourist-spots .spot:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 호버 시 그림자와 상승 효과 */
+}
+
+.tourist-spots .spot img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.tourist-spots .spot-info {
+  padding: 10px;
+}
+
+.tourist-spots .spot-info h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.tourist-spots .spot-info p {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .search input {
+    width: 100%;
+    margin-bottom: 10px; /* 검색창 아래 공간 추가 */
+  }
+
+  .search button {
+    width: 100%;
+  }
+
+  .weather-info {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .tourist-spots ul {
+    grid-template-columns: 1fr; /* 모바일에서는 단일 열 */
+  }
+}
+
+/* 추가 유틸리티: 스크롤바 숨기기 */
+.weather-app {
+  -ms-overflow-style: none; /* IE와 Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.weather-app::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
